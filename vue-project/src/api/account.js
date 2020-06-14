@@ -6,8 +6,12 @@ const getAccount = () => {
 const loginUser = (username, password) => {
 	return request('/api/accounts/login', 'POST', { username, password });
 };
-const addUser = () => {
-	return request('/api/accounts/registration', 'POST');
+const addUser = (userName, email, password) => {
+	return request('/api/accounts/registration', 'POST', {
+		userName,
+		email,
+		password,
+	});
 };
 
 export default {

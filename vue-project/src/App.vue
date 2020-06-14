@@ -10,26 +10,17 @@
 					transition="scale-transition"
 					width="40"
 				/>
-
-				<v-img
-					alt="Vuetify Name"
-					class="shrink mt-1 hidden-sm-and-down"
-					contain
-					min-width="100"
-					src="https://cdn.vuetifyjs.com/images/logos/vuetify-name-dark.png"
-					width="100"
-				/>
+				<router-link to="/">Transaction</router-link>
+				<router-link to="/auth">Auth</router-link>
 			</div>
 
 			<v-spacer></v-spacer>
 
-			<v-btn
-				href="https://github.com/vuetifyjs/vuetify/releases/latest"
-				target="_blank"
-				text
-			>
-				<span class="mr-2">Latest Release</span>
-				<v-icon>open_in_new</v-icon>
+			<v-btn text @click="changeModeRegistration(true)">
+				<span class="mr-2">Sign up</span>
+			</v-btn>
+			<v-btn text @click="changeModeRegistration(false)">
+				<span class="mr-2">Sign in</span>
 			</v-btn>
 		</v-app-bar>
 		<v-content>
@@ -39,7 +30,7 @@
 </template>
 
 <script>
-// import HelloWorld from './components/HelloWorld';
+import { mapActions } from 'vuex';
 
 export default {
 	name: 'App',
@@ -50,6 +41,17 @@ export default {
 
 	data: () => ({
 		//
-	})
+	}),
+
+	created() {
+		this.fetchCurrencies();
+	},
+
+	methods: {
+		...mapActions(['changeModeRegistration']),
+		...mapActions({
+			fetchCurrencies: 'currency/fetchCurrencies',
+		}),
+	},
 };
 </script>

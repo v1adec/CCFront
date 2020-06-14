@@ -25,6 +25,12 @@ const actions = {
 		const { access_token } = await accountClient.loginUser(username, password);
 		window.localStorage.setItem('token', access_token);
 	},
+	async registration(_, { userName, email, password }) {
+		const { Id } = await accountClient.addUser(userName, email, password);
+		if (Id) {
+			console.log('registered');
+		}
+	},
 	async getMe() {
 		const account = await accountClient.getAccount();
 		console.log(account);
