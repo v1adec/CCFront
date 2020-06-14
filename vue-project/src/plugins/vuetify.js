@@ -1,26 +1,26 @@
-import Vue from 'vue';
-import Vuetify from 'vuetify/lib';
+import Vue from 'vue'
+import Vuetify from 'vuetify/lib'
 
-Vue.use(Vuetify);
+Vue.use(Vuetify)
 
 export default new Vuetify({
 	theme: {
 		options: {
-			customProperties: true
+			customProperties: true,
 		},
 		themes: {
 			light: {
-				primary: '#1e14a8',
-				secondary: '#424242',
+				primary: '#2699FB',
+				secondary: '#0E2F3F',
 				accent: '#82B1FF',
-				error: '#FF5252',
+				error: '#EB5757',
 				info: '#2196F3',
-				success: '#4CAF50',
-				warning: '#FFC107'
-			}
-		}
+				success: '#0BA500',
+				warning: '#FFC107',
+			},
+		},
 	},
 	icons: {
-		iconfont: 'md'
-	}
-});
+		iconfont: 'mdi',
+	},
+})
