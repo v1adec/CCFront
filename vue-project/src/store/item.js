@@ -16,18 +16,20 @@ const mutations = {
 	},
 };
 
-const getters = {};
+const getters = {
+	itemName: state => id => state.items.find(item => item.Id === id)?.Name,
+};
 
 const actions = {
 	async fetchItems({ commit }) {
 		const { list } = await itemsClient.getItems();
 		commit('setItems', list);
 	},
-	async addItems({ dispatch }, payload) {
+	async addItem({ dispatch }, payload) {
 		await itemsClient.addItem(payload);
 		dispatch('fetchItems');
 	},
-	async deleteItems({ dispatch }, payload) {
+	async deleteItem({ dispatch }, payload) {
 		await itemsClient.deleteItem(payload);
 		dispatch('fetchItems');
 	},

@@ -1,10 +1,50 @@
 <template>
 	<v-container>
 		<v-row>
-			<v-col col="6">{{ transactions.list }}</v-col>
-			<v-col col="6">
-				<v-form ref="form">
-					<v-switch v-model="outcomeType" class="mx-2">
+			<v-col
+				cols="8"
+				style="max-height: calc(100vh - 100px);
+    overflow: auto;"
+			>
+				<ul>
+					<li
+						v-for="transaction in transactions"
+						:key="transaction.Id"
+						class="mx-auto"
+					>
+						<span v-if="transaction.WorkType">{{ transaction.WorkType }}</span>
+						<span v-else>{{ getItemName(transaction.ItemId) }}</span
+						><br />
+						<span>Type: {{ transaction.Type }}</span
+						><br />
+						<span
+							>{{
+								transaction.WorkType ? transaction.Money : -transaction.Money
+							}}
+						</span>
+						<span>{{ getCurrencyName(transaction.CurrencyId) }}</span
+						><br />
+						<span>{{ transaction.Description }}</span
+						><br />
+						<span>{{ transaction.Date.slice(0, 10) }}</span
+						><br />
+						<v-btn
+							@click="deleteTransaction(transaction.Id)"
+							icon
+							color="error"
+						>
+							<v-icon>highlight_off</v-icon>
+						</v-btn>
+					</li>
+				</ul>
+			</v-col>
+			<v-col cols="4">
+				<v-form ref="form" class="d-flex flex-column">
+					<v-switch
+						v-model="outcomeType"
+						class="mx-2 align-self-start"
+						hide-details
+					>
 						<template #prepend>
 							Income
 						</template>
@@ -35,8 +75,7 @@
 						<template v-slot:activator="{ on, attrs }">
 							<v-text-field
 								v-model="computedDateFormatted"
-								label="Date (read only text field)"
-								hint="MM/DD/YYYY format"
+								label="Date"
 								persistent-hint
 								prepend-icon="event"
 								readonly
@@ -69,10 +108,9 @@
 						name="input-7-1"
 						v-model="form.description"
 						label="Desciption"
-						hint="Hint text"
 					></v-textarea>
-					<v-btn @click="send">
-						Send
+					<v-btn style="width: 50%; align-self: center;" @click="send">
+						Add
 					</v-btn>
 				</v-form>
 			</v-col>
@@ -102,10 +140,8 @@ export default {
 		menu2: false,
 	}),
 	created() {
-		setTimeout(() => this.fetchTransactions(), 500);
-		setTimeout(() => this.fetchItems(), 1000);
-		// this.fetchTransactions();
-		// this.fetchItems();
+		this.fetchTransactions();
+		this.fetchItems();
 	},
 	computed: {
 		...mapState('transaction', ['transactions']),
@@ -113,22 +149,20 @@ export default {
 		...mapState('item', ['items']),
 		...mapGetters({
 			getCurrencyName: 'currency/currencyName',
+			getItemName: 'item/itemName',
 		}),
 
 		computedDateFormatted() {
 			return this.formatDate(this.form.date);
 		},
 	},
-	// watch: {
-	// 	'form.date'() {
-	// 		this.dateFormatted = this.formatDate(this.form.date);
-	// 	},
-	// },
+
 	methods: {
 		...mapActions({
 			fetchTransactions: 'transaction/fetchTransactions',
 			fetchItems: 'item/fetchItems',
 			addTransaction: 'transaction/addTransaction',
+			deleteTransaction: 'transaction/deleteTransaction',
 		}),
 		formatDate(date) {
 			if (!date) return null;
@@ -144,7 +178,7 @@ export default {
 		},
 		send() {
 			this.addTransaction({
-				money: this.outcomeType ? this.form.money * -1 : this.form.money,
+				money: this.form.money,
 				date: this.form.date,
 				type: this.form.type,
 				description: this.form.description,

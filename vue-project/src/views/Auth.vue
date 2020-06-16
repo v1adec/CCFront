@@ -1,11 +1,18 @@
 <template>
 	<v-container>
 		<v-row>
-			<v-col col="6">img</v-col>
-			<v-col col="6">
+			<v-col cols="9">
+				<v-img
+					style="width: 300px; margin: auto"
+					src="../assets/s9.png"
+					alt="s9"
+				/>
+			</v-col>
+			<v-col cols="3">
 				<v-form
 					v-if="modeRegistration"
 					ref="form"
+					class="d-flex flex-column"
 					v-model="valid"
 					:lazy-validation="lazy"
 				>
@@ -49,6 +56,7 @@
 					></v-text-field>
 
 					<v-btn
+						style="width: 50%; align-self: center;"
 						:disabled="!valid"
 						color="success"
 						class="mr-4"
@@ -57,7 +65,13 @@
 						Sign up
 					</v-btn>
 				</v-form>
-				<v-form v-else ref="form" v-model="valid" :lazy-validation="lazy">
+				<v-form
+					v-else
+					ref="form"
+					class="d-flex flex-column"
+					v-model="valid"
+					:lazy-validation="lazy"
+				>
 					<v-text-field
 						v-model="signUpForm.name"
 						:counter="10"
@@ -78,8 +92,31 @@
 						@click:append="show1 = !show1"
 					></v-text-field>
 
-					<v-btn :disabled="!valid" color="success" class="mr-4" @click="login">
+					<v-btn
+						style="width: 50%; align-self: center;"
+						:disabled="!valid"
+						color="success"
+						class="mr-4"
+						@click="login"
+					>
 						Sign in
+					</v-btn>
+					<v-img
+						style="width: 150px; margin-top: 150px; margin-left: -90px"
+						src="../assets/qr-code.png"
+						alt="qr"
+					/>
+					<span style="margin-left: -82px; margin-top: 20px"
+						>Mobile application</span
+					>
+					<v-btn
+						style="width: 50%; align-self: center; margin-left: -290px"
+						color="primary"
+						class="mr-4"
+						href="https://install.appcenter.ms/users/trugaaa/apps/ConsideredCosts"
+						target="_blank"
+					>
+						Download
 					</v-btn>
 				</v-form>
 			</v-col>
@@ -108,8 +145,8 @@ export default {
 		password: '',
 		nameRules: [v => !!v || 'Name is required'],
 		emailRules: [
-			// v => !!v || 'E-mail is required',
-			// v => /.+@.+\..+/.test(v) || 'E-mail must be valid',
+			v => !!v || 'E-mail is required',
+			v => /.+@.+\..+/.test(v) || 'Not valid',
 		],
 		rules: {
 			required: value => !!value || 'Required.',

@@ -7,6 +7,7 @@ import accountModule from './account';
 import transactionModule from './transaction';
 import currencyModule from './currency';
 import itemModule from './item';
+import goalModule from './goal';
 
 Vue.use(Vuex);
 
@@ -26,6 +27,7 @@ export default new Vuex.Store({
 			commit('transaction/resetState');
 			commit('currency/resetState');
 			commit('item/resetState');
+			commit('goal/resetState');
 		},
 	},
 	modules: {
@@ -33,5 +35,6 @@ export default new Vuex.Store({
 		transaction: transactionModule,
 		currency: currencyModule,
 		item: itemModule,
+		goal: goalModule,
 	},
 });

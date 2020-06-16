@@ -3,11 +3,12 @@ const set = name => (state, value) => {
 };
 
 function cleanEmpty(obj) {
-	for (var propName in obj) {
+	for (const propName in obj) {
 		if (obj[propName] === null || obj[propName] === undefined) {
 			delete obj[propName];
 		}
 	}
+	return obj;
 }
 
 export { set, cleanEmpty };

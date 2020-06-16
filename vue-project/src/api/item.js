@@ -4,12 +4,12 @@ const getItems = () => {
 	return request('/api/items', 'GET');
 };
 
-const addItem = name => {
+const addItem = ({ name }) => {
 	return request('/api/items', 'POST', { name });
 };
 
-const deleteItem = () => {
-	return request('/api/items', 'DELETE', {});
+const deleteItem = id => {
+	return request('/api/items', 'DELETE', {}, {}, { id });
 };
 
 const editItem = () => {

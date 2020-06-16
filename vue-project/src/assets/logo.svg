@@ -1,1 +1,35 @@
-<svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 87.5 100"><defs><style>.cls-1{fill:#1697f6;}.cls-2{fill:#7bc6ff;}.cls-3{fill:#1867c0;}.cls-4{fill:#aeddff;}</style></defs><title>Artboard 46</title><polyline class="cls-1" points="43.75 0 23.31 0 43.75 48.32"/><polygon class="cls-2" points="43.75 62.5 43.75 100 0 14.58 22.92 14.58 43.75 62.5"/><polyline class="cls-3" points="43.75 0 64.19 0 43.75 48.32"/><polygon class="cls-4" points="64.58 14.58 87.5 14.58 43.75 100 43.75 62.5 64.58 14.58"/></svg>
+<svg id="Группа_1" data-name="Группа 1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="512" height="512" viewBox="0 0 512 512">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #fff;
+        filter: url(#filter);
+      }
+
+      .cls-1, .cls-2 {
+        fill-rule: evenodd;
+      }
+
+      .cls-2 {
+        fill: #0e2f3f;
+        filter: url(#filter-2);
+      }
+    </style>
+    <filter id="filter" x="74" y="246" width="396" height="244" filterUnits="userSpaceOnUse">
+      <feOffset result="offset" dx="15.564" dy="10.898" in="SourceAlpha"/>
+      <feGaussianBlur result="blur" stdDeviation="4.472"/>
+      <feFlood result="flood" flood-opacity="0.4"/>
+      <feComposite result="composite" operator="in" in2="blur"/>
+      <feBlend result="blend" in="SourceGraphic"/>
+    </filter>
+    <filter id="filter-2" x="74" y="44" width="396" height="244" filterUnits="userSpaceOnUse">
+      <feOffset result="offset" dx="15.564" dy="10.898" in="SourceAlpha"/>
+      <feGaussianBlur result="blur" stdDeviation="4.472"/>
+      <feFlood result="flood" flood-opacity="0.4"/>
+      <feComposite result="composite" operator="in" in2="blur"/>
+      <feBlend result="blend" in="SourceGraphic"/>
+    </filter>
+  </defs>
+  <path id="Фигура_2" data-name="Фигура 2" class="cls-1" d="M434,312.17L256,405.891,121.719,337.162V255.937L78,284.054v71.853s2.031,12.225,12.491,18.744c19.64,12.24,65.8,36,165.509,84.349l159.263-81.225a35.83,35.83,0,0,0,15.614-15.62C435.66,353,433.3,332.167,434,312.17Z"/>
+  <path id="Фигура_1" data-name="Фигура 1" class="cls-2" d="M78,199.83l178-93.721,134.281,68.728v81.226L434,227.946V156.093s-2.031-12.225-12.491-18.744C401.869,125.109,355.7,101.348,256,53L96.737,134.225a35.829,35.829,0,0,0-15.614,15.62C76.34,159,78.7,179.833,78,199.83Z"/>
+</svg>

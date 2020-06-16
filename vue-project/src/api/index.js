@@ -1,11 +1,25 @@
 import axios from 'axios';
 import { cleanEmpty } from '@/utils';
+import router from '@/router';
 
 const API_URL = '';
 
 const handleError = error => {
 	console.log(error);
 };
+
+axios.interceptors.response.use(
+	response => {
+		return response;
+	},
+	error => {
+		if (error.response.status === 401) {
+			router.push('/auth');
+		} else {
+			return Promise.reject(error);
+		}
+	}
+);
 
 const request = (
 	pathTo,

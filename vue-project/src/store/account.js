@@ -1,5 +1,6 @@
 import { set } from '../utils';
 import accountClient from '@/api/account';
+import router from '@/router';
 
 const getDefaultState = () => {
 	return {
@@ -24,6 +25,7 @@ const actions = {
 	async login(_, { username, password }) {
 		const { access_token } = await accountClient.loginUser(username, password);
 		window.localStorage.setItem('token', access_token);
+		router.push('/');
 	},
 	async registration(_, { userName, email, password }) {
 		const { Id } = await accountClient.addUser(userName, email, password);

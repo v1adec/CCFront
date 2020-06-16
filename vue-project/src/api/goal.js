@@ -4,12 +4,12 @@ const getGoals = () => {
 	return request('/api/goals', 'GET');
 };
 
-const addGoal = (money, dateStart, dateFinish) => {
+const addGoal = ({ money, dateStart, dateFinish }) => {
 	return request('/api/goals', 'POST', { money, dateStart, dateFinish });
 };
 
-const deleteGoal = () => {
-	return request('/api/goals', 'DELETE', {});
+const deleteGoal = id => {
+	return request('/api/goals', 'DELETE', {}, {}, { id });
 };
 
 export default {

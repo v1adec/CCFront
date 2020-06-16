@@ -20,11 +20,15 @@ const getters = {};
 
 const actions = {
 	async fetchTransactions({ commit }) {
-		const transactions = await transactionClient.getTransactions();
-		commit('setTransactions', transactions);
+		const { list } = await transactionClient.getTransactions();
+		commit('setTransactions', list);
 	},
 	async addTransaction({ dispatch }, payload) {
 		await transactionClient.addTransaction(payload);
+		dispatch('fetchTransactions');
+	},
+	async deleteTransaction({ dispatch }, payload) {
+		await transactionClient.deleteTransaction(payload);
 		dispatch('fetchTransactions');
 	},
 };

@@ -28,7 +28,12 @@ const addTransaction = ({
 	});
 };
 
+const deleteTransaction = id => {
+	return request('/api/transactions', 'DELETE', {}, {}, { id });
+};
+
 export default {
 	getTransactions,
 	addTransaction,
+	deleteTransaction,
 };

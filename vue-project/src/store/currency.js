@@ -18,7 +18,7 @@ const mutations = {
 
 const getters = {
 	currencyName: state => id =>
-		state.currencies.find(currency => currency.id === id)?.name,
+		state.currencies.find(currency => currency.Id === id)?.Name,
 };
 
 const actions = {
